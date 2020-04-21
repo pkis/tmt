@@ -1,0 +1,17 @@
+summary: Link test to the external issue tracker
+
+story:
+    As a user I want to track the connection between test and external system.
+
+description:
+    URL of an issue on the tracker which is relevant to the test.
+    Should be a ``string`` or a ``list
+    of strings``.
+
+example: |
+    issue: https://github.com/psss/tmt/issues/207
+    issue:
+      - https://github.com/psss/tmt/issues/207
+      - https://bugzilla.redhat.com/show_bug.cgi?id=1
+
+implemented: /tmt/base
