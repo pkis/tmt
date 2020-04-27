@@ -1,12 +1,13 @@
-summary: Link test to the external issue tracker
+summary: Issues related to the test
 
 story:
-    As a user I want to track the connection between test and external system.
+    As a user I want to link related external issues so that I can
+    easily find out what is covered by the test.
 
 description:
-    URL of an issue on the tracker which is relevant to the test.
-    Should be a ``string`` or a ``list
-    of strings``.
+    Relevant external issues, for example features or bugs covered
+    by the test. Should be a ``string`` or a ``list of strings``
+    containing URL of the issue in the external tracker.
 
 example: |
     issue: https://github.com/psss/tmt/issues/207
