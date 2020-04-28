@@ -155,7 +155,7 @@ class Test(Node):
         'description',
         'contact',
         'component',
-        'issue',
+        'coverage',
 
         # Test execution data
         'test',

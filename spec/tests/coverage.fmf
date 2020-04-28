@@ -1,0 +1,21 @@
+summary: Issues or stories related to the test
+
+story:
+    As a user I want to link related stories or external issues so that I can
+    easily find out what is covered by the test.
+
+description:
+    Relevant external issues, for example features or bugs covered
+    by the test. As well as FMF stories describing features.
+    Should be a ``string`` or a ``list of strings``
+    containing either URL of the issue in the external tracker or
+    name of fmf story.
+
+example: |
+    coverage: https://github.com/psss/tmt/issues/207
+    coverage:
+      - https://github.com/psss/tmt/issues/207
+      - https://bugzilla.redhat.com/show_bug.cgi?id=1
+    coverage: /stories/docs/examples
+
+implemented: /tmt/base
