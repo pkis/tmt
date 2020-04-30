@@ -1047,14 +1047,21 @@ class Guest(tmt.utils.Common):
         return 'export {}; '.format(
             ' '.join(tmt.utils.shell_variables(environment)))
 
-    def ansible(self, playbook):
-        """ Prepare guest using ansible playbook """
+    def ansible(self, playbook, inventory=None, options=None):
+        """
+        Prepare guest using ansible playbook
+
+        If the inventory is not specified, by default the guest user and host
+        is used.
+        """
         playbook = self._ansible_playbook_path(playbook)
+        inventory = inventory or f'{self._ssh_guest()},'
+        options = f'{options} ' or ''
         stdout, stderr = self.run(
             f'stty cols {tmt.utils.OUTPUT_WIDTH}; ansible-playbook '
             f'--ssh-common-args="{self._ssh_options(join=True)}" '
-            f'-e ansible_python_interpreter=auto'
-            f'{self._ansible_verbosity()} -i {self._ssh_guest()}, {playbook}')
+            f'-e ansible_python_interpreter=auto {options}'
+            f'{self._ansible_verbosity()} -i {inventory} {playbook}')
         self._ansible_summary(stdout)
 
     def execute(self, command, **kwargs):
