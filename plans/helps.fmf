@@ -14,8 +14,6 @@ discover:
       - name: /help/smoke
         test: ./smoke.sh
         path: /tests/shell
-execute:
-    how: shell.tmt
 artifact:
     - build
     - update

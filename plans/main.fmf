@@ -2,6 +2,10 @@
 provision:
     how: local
 
+# Use the default executor
+execute:
+    how: tmt
+
 # Install packages
 #prepare:
 #  - name: tmt
