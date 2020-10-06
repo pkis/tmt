@@ -1,7 +1,7 @@
 # Use 1minutetip backend
 provision:
     how: minute
-#    image: fedora
+    image: fedora-32
 #    flavor: m1.large
 
 artifact:

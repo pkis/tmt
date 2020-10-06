@@ -3,12 +3,12 @@ provision:
     how: local
 
 # Install packages
-#prepare:
-#  - name: tmt
-#    how: install
-#    package: tmt
+prepare:
+  - name: tmt
+    how: install
+    package: tmt
 #    copr: psss/tmt
-#    directory: tmp/RPMS/noarch
+    directory: tmp/RPMS/noarch
 
 # Ansible playbook
 #prepare:
