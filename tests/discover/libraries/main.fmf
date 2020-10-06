@@ -6,5 +6,4 @@ description:
     are fetched into the discover step workdir. Make sure that the
     test successfully passed. Needs a full virtualization.
 test: ./test.sh
-path: /tests/discover/libraries
 tier: 3

@@ -1,3 +1,2 @@
 summary: Check default and defined test duration
 test: ./test.sh
-path: /tests/discover/duration
