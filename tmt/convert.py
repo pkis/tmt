@@ -272,6 +272,15 @@ def read(path, makefile, nitrate, purpose, disabled):
             echo(style('duration: ', fg='green') + data['duration'])
         except AttributeError:
             pass
+        # Environment
+        try:
+            environment_str = re.search(
+                r'^Environment:\s*(.*)', testinfo, re.M).group(1)
+            data['environment'] = tmt.utils.shell_to_dict(environment_str)
+            echo(style('environment:', fg='green'))
+            echo(pprint.pformat(data['environment']))
+        except AttributeError:
+            pass
         # RhtsRequires (optional) goes to require
         requires = re.findall(r'^RhtsRequires:\s*(.*)', testinfo, re.M)
         if requires:
@@ -400,6 +409,17 @@ def read_nitrate(beaker_task, common_data, disabled):
         except IOError:
             raise ConvertError(
                 "Unable to remove '{0}'.".format(md_path))
+
+    # Add environmental variables from Mafefile to those from Nitrate
+    if 'environment' in common_data.keys():
+        for case in individual_data:
+            if 'environment' in case.keys():
+                for env_var in common_data['environment'].keys():
+                    if env_var not in case['environment'].keys():
+                        case['environment'][env_var] = common_data['environment'][env_var]
+            else:
+                case['environment'] = common_data['environment']
+        common_data.pop('environment')
 
     # Find common data from individual test cases
     common_candidates = dict()
